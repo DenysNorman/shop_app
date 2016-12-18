@@ -12,9 +12,14 @@
   <header>
     <ul>
       <% Category.all.each do |category| %>
-        <li><%= link_to category.title, category_path(category) %></li>
+        <% if category.ancestry == nil %>
+          <li><%= link_to category.title, category_path(category) %>
+          <%= link_to 'edit', edit_category_path(category) %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
+    <%= link_to 'create product', new_product_path %>
   </header>
     <%= yield %>
   </body>
