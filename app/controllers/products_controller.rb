@@ -33,6 +33,9 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  helper_method :set_rating
+
   private
 
   def set_product
@@ -44,4 +47,5 @@ class ProductsController < ApplicationController
                                     :photo, :description,
                                     :in_stock, :category_id)
   end
+
 end

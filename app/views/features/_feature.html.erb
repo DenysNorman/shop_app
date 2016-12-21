@@ -1,0 +1,8 @@
+<table id="feature_table" class="table table-striped">
+  <% @product.feature_values.each do |feature| %>
+      <tr>
+        <th><%= feature.feature.title %></th>
+        <th><%= feature.title %></th>
+      </tr>
+  <% end %>
+</table>

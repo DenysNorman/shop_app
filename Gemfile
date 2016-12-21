@@ -12,7 +12,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
@@ -49,3 +49,6 @@ gem 'activerecord-reputation-system', '~> 3.0', '>= 3.0.1', require: 'reputation
 gem 'ancestry', '~> 2.1'
 gem 'rails_best_practices'
 gem 'rubocop', require: false
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'coffee-script-source', '= 1.11.1'

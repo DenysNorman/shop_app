@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218142609) do
+ActiveRecord::Schema.define(version: 20161219145448) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +32,22 @@ ActiveRecord::Schema.define(version: 20161218142609) do
     t.datetime "updated_at", null: false
     t.string   "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "feature_values", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "feature_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_values_on_feature_id"
+    t.index ["product_id"], name: "index_feature_values_on_product_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -30,6 +60,18 @@ ActiveRecord::Schema.define(version: 20161218142609) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "author"
+    t.integer  "product_id"
+    t.text     "body"
+    t.integer  "rating"
+    t.string   "email"
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
 end

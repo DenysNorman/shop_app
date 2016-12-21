@@ -1,0 +1,7 @@
+$('#myTab').find('.active').removeClass('active');
+$('#myTab').find('#reviews').addClass('active');
+$('.info').find('table').remove();
+if('<%= @product.reviews.published.count %>' == 0){
+    $('.info').append("<table><tr><th>This product has no reviews</tr></th></table>");
+};
+$('.info').append("<%= j render 'reviews/reviews' %>");

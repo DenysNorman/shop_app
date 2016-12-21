@@ -1,15 +1,18 @@
-<%= @category.title %><br>
-<%= link_to 'new category', new_category_path(parent_id: @category) %>
-<ul>
-  <% @category.children.each do |category| %>
-      <li><%= link_to category.title, category_path(category) %></li>
-  <% end %>
-</ul>
-<table>
-  <%= render @products %>
-  <% @category.children.each do |category| %>
-      <% category.products.each do |product| %>
-        <%= render product %>
+<div class="col-md-9">
+  <div class="col-md-9">
+    <% @category.ancestors.each do |ancestor| %>
+        <%= link_to ancestor.title, category_path(ancestor) %>/
+    <% end %>
+    <%= @category.title %>
+ <br>
+      <% @category.children.each do |category| %>
+          <%= link_to category.title, category_path(category) %>
       <% end %>
-  <% end %>
-</table>
+  </div>
+    <%= render @products %>
+    <% @category.children.each do |category| %>
+        <% category.products.each do |product| %>
+          <%= render product %>
+        <% end %>
+    <% end %>
+</div>

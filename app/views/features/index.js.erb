@@ -1,0 +1,4 @@
+$('#myTab').find('.active').removeClass('active');
+$('#myTab').find('#features').addClass('active');
+$('.info').find('table').remove();
+$('.info').append("<%= j render 'features/feature' %>");

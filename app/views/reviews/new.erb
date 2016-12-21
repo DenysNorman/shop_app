@@ -1,0 +1,40 @@
+<div class="col-md-9">
+  <div> <%= @product.title %> review</div><br>
+  <%= form_for(@review)  do|f| %>
+      <% if @review.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+              <% @review.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <%= f.hidden_field :product_id %>
+      <div class="field form-group">
+        <%= f.label :author, "Your Name:" %>
+        <%= f.text_field :author, class: "form-control form-width" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :rating, "Rating product"%>
+        <%= f.range_field :rating,in: 0..5, step: '1', class: "form-control form-width"%>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :body, "Your Review"%>
+        <%= f.text_area :body, class: "form-control form-width", rows:"3" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :email, "Your email"%>
+        <%= f.email_field :email, class: "form-control form-width" %>
+      </div>
+
+      <div class="actions button-margin">
+        <%= f.submit "post" , class: "btn btn-success" %>
+      </div>
+  <% end %>
+</div>

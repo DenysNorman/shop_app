@@ -1,42 +1,44 @@
-<%= form_for(@product)  do|f| %>
-    <% if @product.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="col-md-9">
+  <%= form_for(@product)  do|f| %>
+      <% if @product.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-          <ul>
-            <% @product.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
-    <div class="field form-group">
-      <%= f.label :title, "Name:" %>
-      <%= f.text_field :title, class: "form-control form-width" %>
-    </div>
+      <div class="field form-group">
+        <%= f.label :title, "Name:" %>
+        <%= f.text_field :title, class: "form-control form-width" %>
+      </div>
 
-    <div class="field form-group">
-      <%= f.label :price, "price:"%>
-      <%= f.text_field :price%>
-    </div>
+      <div class="field form-group">
+        <%= f.label :price, "price:"%>
+        <%= f.text_field :price, class: "form-control form-width"%>
+      </div>
 
-    <div class="field form-group">
-      <%= f.label :category_id, "category_id"%>
-      <%= f.text_field :category_id%>
-    </div>
+      <div class="field form-group">
+        <%= f.label :category_id, "category_id"%>
+        <%= f.text_field :category_id, class: "form-control form-width"%>
+      </div>
 
-    <div class="field form-group">
-      <%= f.label :description, "description:"%>
-      <%= f.text_area :description, class: "form-control form-width", rows:"3" %>
-    </div>
+      <div class="field form-group">
+        <%= f.label :description, "description:"%>
+        <%= f.text_area :description, class: "form-control form-width", rows:"3" %>
+      </div>
 
-    <div class="field form-group">
-      <%= f.label :in_stock, "in_stock"%>
-      <%= f.check_box :in_stock%>
-    </div>
+      <div class="field form-group">
+        <%= f.label :in_stock, "in_stock"%>
+        <%= f.check_box :in_stock%>
+      </div>
 
-    <div class="actions button-margin">
-      <%= f.submit "post" , class: "btn btn-success" %>
-    </div>
-<% end %>
+      <div class="actions button-margin">
+        <%= f.submit "post" , class: "btn btn-success" %>
+      </div>
+  <% end %>
+</div>

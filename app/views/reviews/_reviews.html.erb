@@ -1,0 +1,16 @@
+<% @reviews.each do |review| %>
+  <% if review.published? %>
+    <table>
+      <tr>
+        <th>Author: <%= review.author %></th>
+      </tr>
+      <tr>
+        <th>Rating: <%= review.rating %></th>
+      </tr>
+      <tr id="border_bottom_review">
+        <th>Review: <%= review.body %></th>
+      </tr>
+
+    </table>
+  <% end %>
+<% end %>

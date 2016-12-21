@@ -1,6 +1,19 @@
-<tr>
-  <td><%= link_to product.title, product_path(product) %></td>
-  <td><%= product.price %></td>
-  <td><%= link_to 'edit', edit_product_path(product) %></td>
-  <td><%= link_to 'delete', product, method: :delete, data: { confirm: 'Are you sure?'} %></td>
-</tr>
+<div class="col-sm-4 col-lg-4 col-md-4">
+  <div class="thumbnail">
+    <%= link_to image_tag(product.photo_url(:thumb), alt: 'Photo'), product_path(product) %>
+    <hr>
+    <div class="caption">
+      <h4 class="pull-right">$<%= product.price %></h4>
+      <h4><%= link_to product.title, product_path(product) %>
+      </h4>
+      <p><%= product.description %></p>
+    </div>
+    <div class="ratings">
+      <p class="pull-right"><%= product.reviews.published.count%> reviews</p>
+      <p>
+        <% @product = product %>
+    <%= render 'products/rating_stars' %>
+      </p>
+    </div>
+  </div>
+</div>
