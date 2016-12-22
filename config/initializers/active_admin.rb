@@ -1,4 +1,7 @@
 ActiveAdmin.setup do |config|
+  # http auth for admin area
+  config.before_filter :authenticate
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -269,4 +272,5 @@ ActiveAdmin.setup do |config|
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
+
 end
