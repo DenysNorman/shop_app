@@ -1,7 +1,4 @@
 ActiveAdmin.setup do |config|
-  # http auth for admin area
-  config.before_filter :authenticate
-
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -57,7 +54,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
   #
@@ -89,7 +86,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  # config.current_user_method = :current_admin_user
+  config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
@@ -272,5 +269,4 @@ ActiveAdmin.setup do |config|
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
-
 end

@@ -52,3 +52,4 @@ gem 'rubocop', require: false
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'coffee-script-source', '= 1.11.1'
+gem 'devise'
