@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :features
   root to: 'products#index'
   resources :categories
-  resources :products
+  resources :products do
+    member do
+      post 'add_to_cart'
+    end
+  end
 end
