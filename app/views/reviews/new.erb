@@ -13,6 +13,7 @@
           </div>
       <% end %>
       <%= f.hidden_field :product_id %>
+
       <div class="field form-group">
         <%= f.label :author, "Your Name:" %>
         <%= f.text_field :author, class: "form-control form-width" %>
@@ -32,9 +33,9 @@
         <%= f.label :email, "Your email"%>
         <%= f.email_field :email, class: "form-control form-width" %>
       </div>
-
+      <%= hidden_field_tag :product_id, params[:product_id].to_s %>
       <div class="actions button-margin">
-        <%= f.submit "post" , class: "btn btn-success" %>
+        <%= f.submit "post", class: "btn btn-success" %>
       </div>
   <% end %>
 </div>

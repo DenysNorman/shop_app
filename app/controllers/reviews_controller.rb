@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_product_id , only: [:new, :index ]
+  before_action :set_product_id , only: [:new, :index, :create]
 
   def index
     @reviews = @product.reviews.all
@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-    redirect_to(:back)
+    redirect_to(@product)
   end
 
   private
