@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :features, through: :feature_values
   has_many :reviews, dependent: :destroy
   has_many :related_products
-  has_many :related_product_associated, class_name: 'RelatedProduct', foreign_key: 'associated_id'
+  has_many :related_products_associated, class_name: 'RelatedProduct', foreign_key: 'associated_id'
 
 
   validates :title, presence: true, uniqueness: true

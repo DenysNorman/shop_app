@@ -1,0 +1,18 @@
+<div class="col-sm-3 col-lg-3 col-md-3">
+  <div class="thumbnail">
+    <%= link_to image_tag(@product_as.photo_url(:thumb), alt: 'Photo'), product_path(@product_as) %>
+    <hr>
+    <div class="caption">
+      <h4 class="pull-right">$<%= @product_as.price %></h4>
+      <h4><%= link_to @product_as.title, product_path(@product_as) %>
+      </h4>
+      <p><%= @product_as.description %></p>
+    </div>
+    <div class="ratings">
+      <p class="pull-right"><%= @product_as.reviews.published.count%> reviews</p>
+      <p>
+    <%= render 'related_products/rating_stars' %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -61,4 +61,17 @@
         </div>
         <hr>
       </div>
-    </div>
+      <div class="container-fluid">
+        <h3>Related products:</h3>
+        <div class="col-md-12 product-info">
+          <% @product.related_products.each do |t| %>
+              <% @product_as = t.associated %>
+              <%= render 'related_products/related_product' %>
+          <% end %>
+
+          <% @product.related_products_associated.each do |t| %>
+              <% @product_as = t.product %>
+            <%= render 'related_products/related_product' %>
+          <% end %>
+        </div>
+      </div>
