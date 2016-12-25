@@ -37,8 +37,10 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     if cookies[:cart].present?
       products = cookies[:cart].split(',')
-      products << product_id
-      cookies[:cart] = products.join(',')
+      if !products.include?(product_id)
+        products << product_id
+        cookies[:cart] = products.join(',')
+      end
     else
       cookies[:cart] = product_id
     end

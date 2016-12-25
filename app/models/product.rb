@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :related_products
   has_many :related_products_associated, class_name: 'RelatedProduct', foreign_key: 'associated_id'
+  has_many :order_products
 
 
   validates :title, presence: true, uniqueness: true

@@ -1,0 +1,20 @@
+<table>
+  <!-- с этой формы нужно передать значение в экшн put_quantity контроллера order -->
+  <%= form_tag(order_put_quantity_path) do %>
+  <% if cookies[:cart].present? %>
+    <%  cookies[:cart].split(',').each do |id| %>
+      <% @product = Product.find(id) %>
+      <tr>
+        <th colspan="2"><%= @product.title %></th>
+      </tr>
+      <tr>
+        <th><%= image_tag @product.photo_url %></th>
+        <th><%= @product.price %></th>
+        <th><%= button_to 'Delete product', delete_cart_product_order_path(@product), class: 'btn btn-success' %><th>
+        <th><%= number_field_tag :quantity  %></th>
+      </tr>
+    <% end %>
+  <% end %>
+  <%= submit_tag  'Order' %>
+<% end %>
+</table>

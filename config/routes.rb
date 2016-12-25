@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :orders do
+    member do
+      post 'delete_cart_product'
+    end
+    post 'put_quantity'
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   resources :reviews
   ActiveAdmin.routes(self)

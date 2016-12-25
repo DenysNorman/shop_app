@@ -11,7 +11,11 @@
 
         <div class="col-md-4">
           <div class="product-title"><%= @product.title %></div>
-          <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+          <div class="product-rating"><i class="fa fa-star gold"></i>
+            <i class="fa fa-star gold"></i>
+            <i class="fa fa-star gold"></i>
+            <i class="fa fa-star gold"></i>
+            <i class="fa fa-star-o"></i> </div>
           <hr>
           <div class="product-price">$<%= @product.price %></div><br>
           <%= render 'products/rating_stars' %>
