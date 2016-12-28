@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     member do
       post 'delete_cart_product'
     end
-    post 'put_quantity'
   end
+  post 'orders/put_quantity', to: 'orders#put_quantity'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   resources :reviews
   ActiveAdmin.routes(self)

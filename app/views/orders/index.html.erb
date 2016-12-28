@@ -1,20 +1,30 @@
-<table>
-  <!-- с этой формы нужно передать значение в экшн put_quantity контроллера order -->
-  <%= form_tag(order_put_quantity_path) do %>
   <% if cookies[:cart].present? %>
-    <%  cookies[:cart].split(',').each do |id| %>
-      <% @product = Product.find(id) %>
-      <tr>
-        <th colspan="2"><%= @product.title %></th>
-      </tr>
-      <tr>
-        <th><%= image_tag @product.photo_url %></th>
-        <th><%= @product.price %></th>
-        <th><%= button_to 'Delete product', delete_cart_product_order_path(@product), class: 'btn btn-success' %><th>
-        <th><%= number_field_tag :quantity  %></th>
-      </tr>
-    <% end %>
+      <div class="table-order">
+      <%= form_for :quantity , url: {action: "put_quantity"}  do |f| %>
+          <%  cookies[:cart].split(',').each do |id| %>
+              <% @product = Product.find(id) %>
+              <div>
+                <div colspan="2"><%= @product.title %></div>
+              </div>
+              <div>
+                <div><%= image_tag @product.photo_url(:thumb) %></div>
+                <div><%= @product.price %></div>
+              <%= f.fields_for "quantitys_#{id}" do |p| %>
+                  <div><%= p.number_field :qty %></div></div>
+              <% end %>
+          <% end %>
+          <%= f.submit 'Submit' %>
+      <% end %>
+      </div>
+      <div class="left_delete_buttons">
+        <%  cookies[:cart].split(',').each do |id| %>
+            <% @product = Product.find(id) %>
+            <div>
+            <%= button_to 'Delete product', delete_cart_product_order_path(@product), class: 'btn btn-success' %>
+            </div>
+        <% end %>
+      </div>
+
+  <% else %>
+      <h2>No products in the cart</h2>
   <% end %>
-  <%= submit_tag  'Order' %>
-<% end %>
-</table>

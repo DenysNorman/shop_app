@@ -1,1 +1,34 @@
-sdfsdfsdfsdf
+<div class="col-md-9">
+  <%= form_for(@order)  do|f| %>
+      <% if @order.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+              <% @order.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="field form-group">
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name, class: "form-control form-width" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :phone, "Your phone:"%>
+        <%= f.number_field :phone, class: "form-control form-width"%>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :email, "Your Email"%>
+        <%= f.text_field :email, class: "form-control form-width"%>
+      </div>
+
+      <div class="actions button-margin">
+        <%= f.submit "Appy" , class: "btn btn-success" %>
+      </div>
+  <% end %>
+</div>

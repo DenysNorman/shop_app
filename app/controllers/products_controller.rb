@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
       if !products.include?(product_id)
         products << product_id
         cookies[:cart] = products.join(',')
-      end
+        end
     else
       cookies[:cart] = product_id
     end
