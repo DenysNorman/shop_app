@@ -18,11 +18,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="cart">
         <span ><%= link_to 'Cart ', orders_path, class:'glyphicon glyphicon-shopping-cart' %>
-        (<% if cookies[:cart].present? %>
-            <%= cookies[:cart].split(",").count %> )
-        <% else %>
-            0 )
-        <% end %></span>
+        (<%= cookies[:cart].present? ? cookies[:cart].split(",").count : 0 %>)</span>
       </div>
     </div>
   </nav>
@@ -31,9 +27,7 @@
       <div class="col-md-3">
         <div class="list-group">
           <% Category.all.each do |category| %>
-              <% if category.ancestry == nil %>
-                  <%= link_to category.title, category_path(category) %><br>
-              <% end %>
+            <%= link_to category.title, category_path(category) if category.root? %><br>
           <% end %>
         </div>
       </div>

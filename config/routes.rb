@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :orders do
     member do
-      post 'delete_cart_product'
+      get 'delete_cart_product'
     end
   end
   post 'orders/put_quantity', to: 'orders#put_quantity'

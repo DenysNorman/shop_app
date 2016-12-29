@@ -11,7 +11,7 @@
     <div class="ratings">
       <p class="pull-right"><%= @product_as.reviews.published.count%> reviews</p>
       <p>
-    <%= render 'related_products/rating_stars' %>
+    <%= show_stars(@product) %>
       </p>
     </div>
   </div>

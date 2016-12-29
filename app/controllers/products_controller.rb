@@ -37,15 +37,15 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     product_id = params[:id]
-    if cookies[:cart].present?
-      products = cookies[:cart].split(',')
-      if !products.include?(product_id)
-        products << product_id
-        cookies[:cart] = products.join(',')
-        end
-    else
-      cookies[:cart] = product_id
-    end
+    # if cookies[:cart].present?
+    #   products = cookies[:cart].split(',')
+    #   if !products.include?(product_id)
+    #     products << product_id
+    #     cookies[:cart] = products.join(',')
+    #     end
+    # else
+      cookies[:cart] = [ { product_id: product_id, quantity: 2 } ].to_s
+    # end
     redirect_to :back
   end
 

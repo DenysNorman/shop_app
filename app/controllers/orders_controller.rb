@@ -9,7 +9,18 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    make_order_product(@order.id)
+    products = cookies[:cart].split(',')
+    quantitys = cookies[:qty].split(',')
+
+    products.each do |p|
+      n = products.index(p)
+      OrderProduct.create(product_id: p, order_id: order_id,
+                          actual_price: Product.find(p).price, quantity: quantitys[n])
+    end
+
+    @order.place()
+
+
     redirect_to root_url
   end
 
@@ -47,13 +58,4 @@ class OrdersController < ApplicationController
                                   :email, :status)
   end
 
-  def make_order_product(order_id)
-    products = cookies[:cart].split(',')
-    quantitys = cookies[:qty].split(',')
-    products.each do |p|
-      n = products.index(p)
-      OrderProduct.create(product_id: p, order_id: order_id,
-                   actual_price: Product.find(p).price, quantity: quantitys[n])
-    end
-  end
 end

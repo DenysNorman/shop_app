@@ -3,16 +3,15 @@
     <%= link_to image_tag(product.photo_url(:thumb), alt: 'Photo'), product_path(product) %>
     <hr>
     <div class="caption">
-      <h4 class="pull-right">$<%= product.price %></h4>
+      <h4 class="pull-right"><%= number_to_currency(product.price) %></h4>
       <h4><%= link_to product.title, product_path(product) %>
       </h4>
       <p><%= product.description %></p>
     </div>
     <div class="ratings">
-      <p class="pull-right"><%= product.reviews.published.count%> reviews</p>
+      <p class="pull-right"><%= pluralize(product.reviews.published.count, 'review') %> </p>
       <p>
-        <% @product = product %>
-    <%= render 'products/rating_stars' %>
+        <%= show_stars(product) %>
       </p>
     </div>
   </div>

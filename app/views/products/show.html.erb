@@ -15,7 +15,7 @@
             <i class="fa fa-star-o"></i> </div>
           <hr>
           <div class="product-price">$<%= @product.price %></div><br>
-          <%= render 'products/rating_stars' %>
+          <%= show_stars(@product) %>
           <% if @product.in_stock? %>
             <div class="product-stock">In Stock</div>
           <% else %>
