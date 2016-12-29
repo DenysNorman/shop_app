@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product,  only: [:show, :edit, :update, :destroy]
-
+  require 'will_paginate/array'
   def index
-    @products = Product.all
+    @products = Product.all.by_created.page(params[:page]).per_page(5)
   end
 
   def show
+    @product_ass = association
+    @product_ass = @product_ass.paginate(page: params[:page], per_page: 2 )
   end
 
   def new
@@ -57,6 +59,18 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:title, :price,
                                     :photo, :description,
                                     :in_stock, :category_id)
+  end
+
+  def association
+    product_as = []
+    @product = Product.find(params[:id])
+    @product.related_products.each do |t|
+      product_as << t.associated
+    end
+    @product.related_products_associated.each do |t|
+      product_as << t.product
+    end
+    product_as
   end
 
 end

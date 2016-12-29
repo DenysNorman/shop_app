@@ -16,13 +16,13 @@
         <%= link_to 'Guitar Heaven', root_path, class: "navbar-brand" %>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <%= link_to 'Cart', orders_path %>
+      <div class="collapse navbar-collapse" id="cart">
+        <span ><%= link_to 'Cart ', orders_path, class:'glyphicon glyphicon-shopping-cart' %>
         (<% if cookies[:cart].present? %>
             <%= cookies[:cart].split(",").count %> )
         <% else %>
             0 )
-        <% end %>
+        <% end %></span>
       </div>
     </div>
   </nav>
@@ -41,17 +41,15 @@
     </div>
   </div>
 
-
-  <div class="container">
-    <hr>
-    <footer>
+  </body>
+  <div class="container" >
+    <footer >
+      <hr>
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" >
           <p>Copyright &copy; My Website 2016</p>
         </div>
       </div>
     </footer>
-
   </div>
-  </body>
 </html>

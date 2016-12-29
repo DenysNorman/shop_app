@@ -1,8 +1,6 @@
-
       <div class="container">
         <div class="col-md-3">
           <div class="product col-md-12 service-image-left">
-
             <center>
               <div id="main-photo"><%= image_tag @product.photo_url %></div>
             </center>
@@ -30,17 +28,14 @@
           <div class="btn-group wishlist">
            <%= link_to 'Add review', new_review_path(product_id: @product) %>
           </div>
-
         </div>
       </div>
     <div class="container-fluid">
       <div class="col-md-12 product-info">
         <ul id="myTab" class="nav nav-tabs nav_tabs">
-
           <li class="active" id="description" ><%= link_to 'Description', product_path(@product), remote: true %></a></li>
           <li id="features" ><%= link_to 'Features', features_path(product_id: @product), remote: true %></li>
           <li id="reviews" ><%= link_to 'Reviews', reviews_path(product_id: @product), remote: true %></li>
-
         </ul>
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade in active" id="service-one">
@@ -50,31 +45,28 @@
                 <tr><th><%= @product.description %></th></tr>
               </table>
             </section>
-
           </div>
           <div class="tab-pane fade" id="service-two">
-
             <section class="container">
-
             </section>
-
           </div>
-
           </div>
         </div>
         <hr>
       </div>
       <div class="container-fluid">
+        <% if @product_ass.length > 0 %>
         <h3>Related products:</h3>
-        <div class="col-md-12 product-info">
-          <% @product.related_products.each do |t| %>
-              <% @product_as = t.associated %>
-              <%= render 'related_products/related_product' %>
-          <% end %>
-
-          <% @product.related_products_associated.each do |t| %>
-              <% @product_as = t.product %>
-            <%= render 'related_products/related_product' %>
-          <% end %>
-        </div>
-      </div>
+            <% if @product_ass.previous_page %>
+                <%= link_to "< Previous", params.permit(:page).merge(page: @product_ass.previous_page ) %>
+            <% end %>
+            <% if @product_ass.next_page %>
+                <%= sanitize link_to "Next >", params.permit(:page).merge(page: @product_ass.next_page ) %>
+            <% end %>
+          <div class="col-md-12 product-info">
+            <% @product_ass.each do |t| %>
+                <% @product_as = Product.find(t) %>
+                <%= render 'related_products/related_product' %>
+            <% end %>
+          </div>
+        <% end %>
