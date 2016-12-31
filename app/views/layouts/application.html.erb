@@ -18,7 +18,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="cart">
         <span ><%= link_to 'Cart ', orders_path, class:'glyphicon glyphicon-shopping-cart' %>
-        (<%= cookies[:cart].present? ? cookies[:cart].split(",").count : 0 %>)</span>
+        (<%= cookies[:cart].present? ? eval(cookies[:cart]).length : 0 %>)</span>
       </div>
     </div>
   </nav>
@@ -31,6 +31,9 @@
           <% end %>
         </div>
       </div>
+      <p class="messages">
+        <span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span></p>
       <%= yield %>
     </div>
   </div>

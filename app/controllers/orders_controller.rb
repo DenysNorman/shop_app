@@ -9,18 +9,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    products = cookies[:cart].split(',')
-    quantitys = cookies[:qty].split(',')
-
-    products.each do |p|
-      n = products.index(p)
-      OrderProduct.create(product_id: p, order_id: order_id,
-                          actual_price: Product.find(p).price, quantity: quantitys[n])
-    end
-
-    @order.place()
-
-
+    products = cookies[:cart]
+    @order.place(products, @order.id)
+    cookies.delete :cart
     redirect_to root_url
   end
 
@@ -29,27 +20,23 @@ class OrdersController < ApplicationController
 
   def delete_cart_product
     product_id = params[:id]
-    products = cookies[:cart].split(',')
-    products.delete(product_id)
-    cookies[:cart] = products.join(',')
+    products = eval(cookies[:cart])
+    products.delete_if { |h| h[:product_id] == product_id }
+    cookies[:cart] = products.to_s
     redirect_to :back
   end
 
   def put_quantity
-    products = cookies[:cart].split(',')
+    products = eval(cookies[:cart])
     products.each do |p|
-      q = "quantitys_#{p}".to_sym
+      q = "quantitys_#{p[:product_id]}".to_sym
       qty = params[:quantity][q][:qty]
-      if cookies[:qty].present?
-        qtys = cookies[:qty].split(',')
-        qtys << qty
-        cookies[:qty] = qtys.join(',')
-      else
-        cookies[:qty] = qty
-      end
+      p[:quantity] = qty
     end
+    cookies[:cart] = products.to_s
     redirect_to new_order_path
   end
+
 
   private
 
