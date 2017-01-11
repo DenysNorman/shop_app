@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @order = Order.create(order_params)
     products = cookies[:cart]
     @order.place(products, @order.id)
+    CustomerMailer.order_confirmation(@order).deliver
     cookies.delete :cart
     redirect_to root_url
   end

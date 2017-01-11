@@ -15,6 +15,14 @@
       <div class="navbar-header">
         <%= link_to 'Guitar Heaven', root_path, class: "navbar-brand" %>
       </div>
+      <div class="search">
+        <%= form_tag products_path, method: 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag 'Search', :name  => nil %>
+          </p>
+        <% end %>
+      </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="cart">
         <span ><%= link_to 'Cart ', orders_path, class:'glyphicon glyphicon-shopping-cart' %>

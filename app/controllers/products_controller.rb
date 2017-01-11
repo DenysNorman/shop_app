@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product,  only: [:show, :edit, :update, :destroy]
   require 'will_paginate/array'
   def index
-    @products = Product.all.by_created.page(params[:page]).per_page(5)
+    if params[:search]
+     @products = Product.where('title LIKE ?', "%#{params[:search]}%").by_created.page(params[:page]).per_page(5)
+    else
+     @products = Product.all.by_created.page(params[:page]).per_page(5)
+    end
   end
 
   def show

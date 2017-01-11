@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :search_suggestions
   resources :orders do
     member do
       get 'delete_cart_product'
