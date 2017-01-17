@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   has_many :order_products
 
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: true, length: { maximum: 80 }
   validates :price, presence: true
   validates :photo, presence: true
 

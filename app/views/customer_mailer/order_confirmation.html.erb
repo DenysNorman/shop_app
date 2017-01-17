@@ -1,9 +1,19 @@
 <h1><%= @order.name %>, your order is accepted.</h1>
-<h2>Order id : <%= @order.id %><h2>
-  <h3>You ordered</h3>
-  <ul>
-    <% eval(cookies[:cart]).each do |obj| %>
-        <li><%= Product.find(obj[:product_id]).title %>, quantity: <%= obj[:quantity] %> </li>
-    <% end %>
-  </ul>
+<h2>Order id : <%= @order.id %></h2>
+  <h3>You ordered:</h3>
+<table>
+  <tr>
+    <td>Title</td>
+    <td>Price</td>
+    <td>Quantity</td>
+  </tr>
+  <% eval(cookies[:cart]).each do |obj| %>
+      <tr>
+        <td><%= Product.find(obj[:product_id]).title %></td>
+        <td><%= obj[:quantity] %> </td>
+        <td><%= Product.find(obj[:product_id]).price %> </td>
+      </tr>
+  <% end %>
+</table>
+<p>Total price <%= number_to_currency(Order.total_price(@order).to_i) %></p>
 <p>Wait, our manager will contact you.</p>
