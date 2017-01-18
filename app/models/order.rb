@@ -14,6 +14,7 @@ class Order < ApplicationRecord
                           actual_price: Product.find(p[:product_id]).price, quantity: p[:quantity])
     end
   end
+
   def total_price(order)
     @price = 0
     OrderProduct.where(order_id: order.id).each do |f|

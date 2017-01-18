@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     AdminMailer.order_confirmation(@order).deliver
     CustomerMailer.order_confirmation(@order).deliver
     cookies.delete :cart
-    redirect_to root_url
+    redirect_to root_url, flash: {notice: "Order created, wait for email"}
   end
 
   def destroy

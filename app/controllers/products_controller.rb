@@ -3,9 +3,9 @@ class ProductsController < ApplicationController
   require 'will_paginate/array'
   def index
     if params[:search]
-     @products = Product.where('title LIKE ?', "%#{params[:search]}%").by_created.page(params[:page]).per_page(5)
+     @products = Product.where('title LIKE ?', "%#{params[:search]}%").by_created.page(params[:page]).per_page(9)
     else
-     @products = Product.all.by_created.page(params[:page]).per_page(5)
+     @products = Product.all.by_created.page(params[:page]).per_page(9)
     end
   end
 

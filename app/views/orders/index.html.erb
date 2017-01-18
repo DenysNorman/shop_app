@@ -18,15 +18,15 @@
               <p><%= @product.title %></p>
             </div>
             <div class="order-div price">
-                <p><%= @product.price %></p>
+                <p><%= number_to_currency(@product.price) %></p>
             </div>
             <div class="order-div quantity">
               <%= f.fields_for "quantitys_#{obj[:product_id]}" do |p| %>
-                  <div><%= p.number_field :qty %></div>
+                  <div><%= p.number_field :qty, value: 1 , min: 1 %></div>
               <% end %>
             </div>
             <div class="order-div delete">
-              <%= link_to 'Delete product', delete_cart_product_order_path(@product), class: 'btn btn-success' %>
+              <%= link_to 'Delete product', delete_cart_product_order_path(@product), class: 'button' %>
             </div>
             </div>
         <% end %>

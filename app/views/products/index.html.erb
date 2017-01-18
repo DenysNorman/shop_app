@@ -1,4 +1,8 @@
 <div class="col-md-9">
-  <%= render @products %>
+  <% if @products.blank? %>
+   <h1>No results for you</h1>
+  <% else %>
+    <%= render @products %>
+  <% end %>
 </div>
 <%= will_paginate @products %>

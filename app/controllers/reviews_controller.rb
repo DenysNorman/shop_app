@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-    redirect_to(@product)
+    redirect_to product_path(@product), flash: {notice: "Review created, wait for submitting by admitistrator"}
   end
 
   private

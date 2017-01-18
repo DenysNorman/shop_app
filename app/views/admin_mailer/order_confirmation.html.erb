@@ -10,13 +10,14 @@
     <td>Price</td>
     <td>Quantity</td>
   </tr>
-  <% eval(cookies[:cart]).each do |obj| %>
-    <tr>
-      <td><%= Product.find(obj[:product_id]).title %></td>
-      <td><%= obj[:quantity] %></td>
-      <td><%= Product.find(obj[:product_id]).price %> </td>
-    </tr>
+  <% OrderProduct.where(order_id: @order.id).each do |ord| %>
+      <% product = Product.find(ord.product_id) %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.price %> </td>
+        <td><%= ord.quantity %></td>
+      </tr>
   <% end %>
 </table>
-<p>Total price <%= number_to_currency(Order.total_price(@order).to_i) %></p>
+<p>Total price <%= number_to_currency(@order.total_price(@order).to_i) %></p>
 
