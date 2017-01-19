@@ -101,7 +101,18 @@ ActiveRecord::Schema.define(version: 20170111165653) do
 
   create_table "related_products", force: :cascade do |t|
     t.integer  "product_id"
-    t.integer  "associated_id"
+    t.integer  "
+
+Ну да, эт для админки
+Sent on:
+
+Tue
+
+Я не знаю, это Олег давал пример как кастомно что-то доставить в создание продуктов
+This message was edited
+
+У меня просто создание фич, продуктов, ассоциаций, все на разных страницах
+"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["product_id"], name: "index_related_products_on_product_id"
