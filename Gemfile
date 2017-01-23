@@ -60,3 +60,7 @@ gem 'coffee-script-source', '= 1.11.1'
 gem 'devise'
 gem 'js_cookie_rails'
 gem 'will_paginate', '~> 3.1'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem "active_admin-sortable_tree"
+gem 'jquery-turbolinks'
+gem 'faker', '~> 1.6', '>= 1.6.3'

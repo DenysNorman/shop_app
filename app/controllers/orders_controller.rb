@@ -9,12 +9,21 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    products = cookies[:cart]
-    @order.place(products, @order.id)
-    AdminMailer.order_confirmation(@order).deliver
-    CustomerMailer.order_confirmation(@order).deliver
-    cookies.delete :cart
-    redirect_to root_url, flash: {notice: "Order created, wait for email"}
+    respond_to do |format|
+      if @order.save
+        format.html do
+          products = cookies[:cart]
+          @order.place(products, @order.id)
+          AdminMailer.order_confirmation(@order).deliver
+          CustomerMailer.order_confirmation(@order).deliver
+          cookies.delete :cart
+          redirect_to root_url,
+                      flash:  {notice: "Order created, wait for email"}
+        end
+      else
+        format.html  { render :new }
+      end
+    end
   end
 
   def destroy

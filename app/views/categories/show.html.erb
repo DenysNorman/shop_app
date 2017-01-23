@@ -8,11 +8,13 @@
       <% @category.children.each do |category| %>
           <%= link_to category.title, category_path(category) %>
       <% end %>
-  </div>
+  </div><br>
+  <hr>
     <%= render @products %>
     <% @category.children.each do |category| %>
         <% category.products.each do |product| %>
           <%= render product %>
         <% end %>
     <% end %>
+
 </div>

@@ -2,11 +2,11 @@
   <%= form_for(@order)  do|f| %>
       <% if @order.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+            <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being created:</h2>
 
             <ul>
               <% @order.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
+                  <li class="order_error_message"><%= message %></li>
               <% end %>
             </ul>
           </div>

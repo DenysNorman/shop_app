@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def show
     @product_ass = association
-    @product_ass = @product_ass.paginate(page: params[:page], per_page: 2 )
+    @product_ass = @product_ass.paginate(page: params[:page], per_page: 4 )
   end
 
   def new

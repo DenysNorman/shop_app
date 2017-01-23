@@ -34,9 +34,13 @@
     <div class="row">
       <div class="col-md-3">
         <div class="list-group">
+          <table >
           <% Category.all.each do |category| %>
-            <%= link_to category.title, category_path(category) if category.root? %><br>
+            <tr>
+              <td class="category_table"><%= link_to category.title, category_path(category) if category.root? %></td>
+            </tr>
           <% end %>
+            </table>
         </div>
       </div>
       <p class="messages">

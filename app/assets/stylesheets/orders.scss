@@ -6,21 +6,21 @@
 
 }
 .title{
-  margin-left: 100px;
-  width: 100px;
+  margin-left: 40px;
+  width: 80px;
 }
 .price{
-  margin-left: 100px;
-  width: 100px;
+  margin-left: 40px;
+  width: 80px;
 }
 .quantity{
-  margin-left: 100px;
-  width: 100px;
+  margin-left: 40px;
+  width: 80px;
 }
 .delete {
   float: right;
   margin-top: 55px;
-  width: 100px;
+  width: 80px;
 }
 .columns-order{
   margin-left: 150px;
@@ -34,4 +34,7 @@
 }
 .table-order{
   margin-bottom: 20px;
+}
+.order_error_message{
+  color: red;
 }

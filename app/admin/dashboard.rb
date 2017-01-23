@@ -3,10 +3,20 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+
+      section 'Recent Products' do
+        table_for Product.order('created_at desc').limit(5) do
+          column :title
+          column :created_at
+        end
+        strong { link_to "All products", admin_products_path}
+      end
+      section 'Recent Reviews' do
+        table_for Review.order('created_at desc').limit(5) do
+          column :product_id
+          column :created_at
+        end
+        strong { link_to "All reviews", admin_reviews_path}
       end
     end
 
@@ -30,4 +40,3 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     # end
   end # content
-end

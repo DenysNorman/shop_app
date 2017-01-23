@@ -3,39 +3,39 @@
   <%= form_for(@review)  do|f| %>
       <% if @review.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+            <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
             <ul>
               <% @review.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
+                  <li class="review_error_message"><%= message %></li>
               <% end %>
             </ul>
           </div>
       <% end %>
       <%= f.hidden_field :product_id %>
 
-      <div class="field form-group">
+      <div class="field form-group review_form">
         <%= f.label :author, "Your Name:" %>
         <%= f.text_field :author, class: "form-control form-width" %>
       </div>
 
-      <div class="field form-group">
+      <div class="field form-group review_form">
         <%= f.label :rating, "Rating product"%>
-        <%= f.range_field :rating,in: 0..5, step: '1', class: "form-control form-width"%>
+        <%= f.select :rating, Review::RATING %>
       </div>
 
-      <div class="field form-group">
+      <div class="field form-group review">
         <%= f.label :body, "Your Review"%>
         <%= f.text_area :body, class: "form-control form-width", rows:"3" %>
       </div>
 
-      <div class="field form-group">
+      <div class="field form-group review_form">
         <%= f.label :email, "Your email"%>
         <%= f.email_field :email, class: "form-control form-width" %>
       </div>
       <%= hidden_field_tag :product_id, params[:product_id].to_s %>
       <div class="actions button-margin">
-        <%= f.submit "post", class: "btn btn-success" %>
+        <%= f.submit "Post", class: "btn btn-success" %>
       </div>
   <% end %>
 </div>

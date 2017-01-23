@@ -25,8 +25,8 @@
           <div class="btn-group cart">
               <%= button_to 'Add to cart', add_to_cart_product_path(@product), class: 'btn btn-success' %>
           </div><br><br>
-          <div class="btn-group wishlist">
-           <%= link_to 'Add review', new_review_path(product_id: @product) %>
+          <div class="btn-group add_review">
+           <%= link_to 'Add review', new_review_path(product_id: @product), class:'glyphicon glyphicon-plus' %>
           </div>
         </div>
       </div>
@@ -68,5 +68,6 @@
                 <% @product_as = Product.find(t) %>
                 <%= render 'related_products/related_product' %>
             <% end %>
-          </div>
         <% end %>
+        </div>
+      </div>

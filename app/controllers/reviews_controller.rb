@@ -11,8 +11,17 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-    redirect_to product_path(@product), flash: {notice: "Review created, wait for submitting by admitistrator"}
-  end
+    respond_to do |format|
+    if @review.save
+      format.html do
+        redirect_to product_path(@product),
+                    flash: {notice: "Review created, wait for submitting by admitistrator"}
+      end
+    else
+      format.html  { render :new }
+    end
+      end
+    end
 
   private
 
