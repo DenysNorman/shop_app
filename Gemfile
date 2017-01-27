@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
+  gem 'pg', '0.18.4'
 end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -38,10 +38,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano', '3.5.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-nginx'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-upload-config'
+  gem 'sshkit-sudo'
 end
-group :production do
-  gem 'pg', '0.18.4'
-end
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
