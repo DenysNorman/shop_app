@@ -381,7 +381,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 5.0, >= 5.0.5)
   js_cookie_rails
   listen (~> 3.0.5)
-  pg (= 0.18.4)
+  pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails_best_practices

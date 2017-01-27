@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
+gem 'pg', '~> 0.18'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'rmagick'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -29,7 +30,6 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'pg', '0.18.4'
 end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
