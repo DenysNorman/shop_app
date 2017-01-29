@@ -20,7 +20,7 @@ server {
 
 server {
 <% if fetch(:nginx_use_ssl) %>
-  listen 443;
+  listen 443;g
   ssl on;
   ssl_certificate /etc/ssl/certs/<%= fetch(:nginx_config_name) %>.crt;
   ssl_certificate_key /etc/ssl/private/<%= fetch(:nginx_config_name) %>.key;
