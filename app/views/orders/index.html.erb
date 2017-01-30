@@ -17,12 +17,12 @@
             <div class="order-div title">
               <p><%= @product.title %></p>
             </div>
-            <div class="order-div price">
-                <p><%= number_to_currency(@product.price) %></p>
+            <div class="order-div price" data-value="<%= @product.price %>">
+              <p><%= number_to_currency(@product.price) %></p>
             </div>
             <div class="order-div quantity">
               <%= f.fields_for "quantitys_#{obj[:product_id]}" do |p| %>
-                  <div><%= p.number_field :qty, value: 1 , min: 1 %></div>
+                <div><%= p.number_field :qty, value: 1 , min: 1 %></div>
               <% end %>
             </div>
             <div class="order-div delete">
@@ -33,6 +33,7 @@
         <%= f.submit 'Create Order', class:'submit-products' %>
     <% end %>
     </div>
+    <div><h4>Total price : $<span id="totalprice"></span></h4></div>
 <% else %>
     <h2>No products in the cart</h2>
 <% end %>

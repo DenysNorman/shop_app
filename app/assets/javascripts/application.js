@@ -16,3 +16,23 @@
 //= require turbolinks
 //= require js.cookie
 //= require_tree .
+
+$( document ).on('turbolinks:load', function() {
+    function calculatePrice() {
+        var quantity, price, sum = 0;
+        $('.table-order').each(function () {
+            price = $(this).children('.price').attr('data-value');
+            quantity = $(this).children('.quantity').find('input').val();
+            if (!isNaN(price) && !isNaN(quantity)) {
+                sum += price * quantity;
+            }
+        });
+        sum = sum.toFixed(2);
+        $('#totalprice').text(sum);
+    };
+    calculatePrice();
+
+    $('.table-order').on('keyup', '.quantity', function () {
+        calculatePrice();
+    });
+});
