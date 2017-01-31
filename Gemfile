@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 gem 'rails_12factor', group: :production
+gem 'sendgrid'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'rmagick'
 gem 'bootstrap-sass'

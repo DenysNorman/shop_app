@@ -14,7 +14,7 @@
       <% product = Product.find(ord.product_id) %>
       <tr>
         <td><%= product.title %></td>
-        <td><%= product.price %> </td>
+        <td>$<%= product.price %> </td>
         <td><%= ord.quantity %></td>
       </tr>
   <% end %>
