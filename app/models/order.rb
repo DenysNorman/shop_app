@@ -1,5 +1,10 @@
 class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
+  enum status_keys: {
+      'Processing' => 0,
+      'Shipped' => 1,
+      'Received' => 2
+  }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },

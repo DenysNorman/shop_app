@@ -14,7 +14,7 @@ ActiveAdmin.register Product do
     f.input :photo, as: :file
     f.input :in_stock
     end
-    unless f.object.new_record?
+
       f.inputs 'Add product feature' do
         f.has_many :feature_values, heading: 'Feature', allow_destroy: true do |fea|
           fea.input :feature, label: 'Feature'
@@ -26,7 +26,7 @@ ActiveAdmin.register Product do
         a.input :associated, label: 'Association'
       end
     end
-    end
+
     f.action :submit
     end
 end
