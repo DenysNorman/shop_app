@@ -43,6 +43,12 @@ RSpec.describe Order, type: :model do
       expect(order.total_price(order)).to eq(rand_times * price)
     end
   end
+  context '#relations' do
+    it 'should have many order_products' do
+      t = Order.reflect_on_association(:order_products)
+      t.macro.should == :has_many
+    end
+  end
 
 
 end
